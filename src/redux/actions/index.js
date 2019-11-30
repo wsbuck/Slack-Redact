@@ -1,0 +1,29 @@
+export const RECEIVE_JSON = 'RECEIVE_JSON';
+export const REQUEST_JSON = 'REQUEST_JSON';
+export const INCREMENT_INDEX = 'INCREMENT_INDEX';
+export const DECREMENT_INDEX = 'DECREMENT_INDEX';
+
+export function receiveJSON(json) {
+  return {
+    type: RECEIVE_JSON,
+    payload: json,
+  };
+}
+
+export function requestJSON(json) {
+  return {
+    type: REQUEST_JSON,
+  };
+}
+
+export function incrementIndex() {
+  return {
+    type: INCREMENT_INDEX,
+  };
+}
+
+export function decrementIndex() {
+  return {
+    type: DECREMENT_INDEX,
+  };
+}
