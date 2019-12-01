@@ -4,10 +4,9 @@ import { useDispatch } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
 
-import { receiveJSON } from '../redux/actions';
+import { receiveJSON, updateFileName } from '../redux/actions';
 
 import flatten from 'flat';
-import { classExpression } from '@babel/types';
 import { makeStyles } from '@material-ui/core/styles';
 
 
@@ -24,6 +23,7 @@ const FileUpload = () => {
 
   function handleFileUpload(e) {
     reader.onload = onReaderLoad;
+    dispatch(updateFileName(e.target.files[0].name));
     reader.readAsText(e.target.files[0]);
   }
 
@@ -32,7 +32,6 @@ const FileUpload = () => {
     const newObj = obj.map(item => {
       return flatten(item);
     });
-
     dispatch(receiveJSON(newObj));
   }
 

@@ -6,11 +6,13 @@ import {
   INCREMENT_INDEX,
   DECREMENT_INDEX,
   UPDATE_FIELD,
+  UPDATE_FILENAME,
 } from '../actions';
 
 const editJSON = (
   state={
     isLoading: false,
+    name: 'temp.json',
     data: [
       {
         a: 'hello',
@@ -45,6 +47,10 @@ const editJSON = (
     case DECREMENT_INDEX:
       return Object.assign({}, state, {
         index: state.index - 1,
+      });
+    case UPDATE_FILENAME:
+      return Object.assign({}, state, {
+        name: action.payload,
       });
     case UPDATE_FIELD:
       return Object.assign({}, state, {

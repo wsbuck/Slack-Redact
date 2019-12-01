@@ -1,14 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import NavigationButtons from './NavigationButtons';
 import EditCard from './EditCard';
 import FileUpload from './FileUpload';
-
+import FileDownload from './FileDownload';
+import { makeStyles } from '@material-ui/core/styles';
 import '../assets/App.css';
 
+
+const useStyles = makeStyles(theme => ({
+  fileButtons: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+}));
+
+
 function App() {
+  const classes = useStyles();
   const data = useSelector(state => state.editJSON.data);
   const dataIndex = useSelector(state => state.editJSON.index);
   const [dataItem, setDataItem] = useState();
@@ -24,7 +35,10 @@ function App() {
       { data && (
         <p>Index: {dataIndex}</p>
       )}
-      <FileUpload />
+      <div className={classes.fileButtons}>
+        <FileUpload />
+        <FileDownload />
+      </div>
 
     </div>
   );
