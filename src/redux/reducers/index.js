@@ -5,6 +5,7 @@ import {
   REQUEST_JSON,
   INCREMENT_INDEX,
   DECREMENT_INDEX,
+  UPDATE_FIELD,
 } from '../actions';
 
 const editJSON = (
@@ -13,9 +14,13 @@ const editJSON = (
     data: [
       {
         a: 'hello',
+        b: 'doinker',
+        c: 'test',
       },
       {
         a: 'bye',
+        b: 'doinker',
+        c: 'test',
       },
     ],
     index: 0,
@@ -24,7 +29,6 @@ const editJSON = (
 ) => {
   switch (action.type) {
     case REQUEST_JSON:
-      console.log(action);
       return Object.assign({}, state, {
         isLoading: true,
       });
@@ -41,6 +45,15 @@ const editJSON = (
     case DECREMENT_INDEX:
       return Object.assign({}, state, {
         index: state.index - 1,
+      });
+    case UPDATE_FIELD:
+      return Object.assign({}, state, {
+        data: state.data.map((item, index) => {
+          if (index === state.index) {
+            item[action.field] = action.value
+          }
+          return item;
+        })
       });
     default:
       return state;

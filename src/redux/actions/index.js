@@ -2,6 +2,7 @@ export const RECEIVE_JSON = 'RECEIVE_JSON';
 export const REQUEST_JSON = 'REQUEST_JSON';
 export const INCREMENT_INDEX = 'INCREMENT_INDEX';
 export const DECREMENT_INDEX = 'DECREMENT_INDEX';
+export const UPDATE_FIELD = 'UPDATE_FIELD';
 
 export function receiveJSON(json) {
   return {
@@ -25,5 +26,13 @@ export function incrementIndex() {
 export function decrementIndex() {
   return {
     type: DECREMENT_INDEX,
+  };
+}
+
+export function updateField(field, value) {
+  return {
+    type: UPDATE_FIELD,
+    field: field,
+    value: value,
   };
 }

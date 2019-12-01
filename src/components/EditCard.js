@@ -1,31 +1,61 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
-const useStyles = makeStyles({
+import { updateField } from '../redux/actions';
+
+const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: '100%',
-    width: 900,
+    width: 600,
     marginLeft: 'auto',
     marginRight: 'auto',
     marginTop: 20,
   },
-
-})
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    margin: theme.spacing(1),
+    width: '100%',
+  }
+}));
 
 const EditCard = ({ data }) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  function handleChange(key, value) {
+    dispatch(updateField(key, value));
+  }
 
   return (
     <Card className={classes.card}>
       <CardContent>
-        <Typography gutterBottom>
-          Item
-        </Typography>
+        <form className={classes.container} noValidate autoComplete="off">
+          {
+            Object.keys(data).map((key, index) => (
+              <TextField
+                key={index}
+                label={key}
+                value={data[key]}
+                onChange={(e) => handleChange(key, e.target.value)}
+                variant="outlined"
+                className={classes.textField}
+              />
+            ))
+          }
+        </form>
       </CardContent>
     </Card>
   );
