@@ -24,7 +24,12 @@ const useStyles = makeStyles(theme => ({
   textField: {
     margin: theme.spacing(1),
     width: '100%',
-  }
+  },
+  subTextField: {
+    margin: theme.spacing(1),
+    marginLeft: 'auto',
+    width: '90%',
+  },
 }));
 
 const EditCard = ({ data }) => {
@@ -51,7 +56,12 @@ const EditCard = ({ data }) => {
                 value={data[key]}
                 onChange={(e) => handleChange(key, e.target.value)}
                 variant="outlined"
-                className={classes.textField}
+                // className={classes.textField}
+                className={
+                  key.match(/\./)
+                  ? classes.subTextField
+                  : classes.textField
+                }
               />
             ))
           }

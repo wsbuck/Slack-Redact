@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import NavigationButtons from './NavigationButtons';
 import EditCard from './EditCard';
+import FileUpload from './FileUpload';
 
 import '../assets/App.css';
 
@@ -18,11 +19,13 @@ function App() {
 
   return (
     <div className="App">
+      <NavigationButtons />
       {dataItem && (<EditCard data={dataItem} />)}
       { data && (
         <p>Index: {dataIndex}</p>
       )}
-      <NavigationButtons />
+      <FileUpload />
+
     </div>
   );
 }
