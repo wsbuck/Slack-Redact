@@ -15,14 +15,14 @@ const editJSON = (
     name: 'temp.json',
     data: [
       {
-        a: 'hello',
-        b: 'doinker',
-        c: 'test',
+        a: 'Hello',
+        b: 'World',
+        c: '!!!!',
       },
       {
-        a: 'bye',
-        b: 'doinker',
-        c: 'test',
+        a: 'foo',
+        b: 'bar',
+        c: 'foobar',
       },
     ],
     index: 0,
