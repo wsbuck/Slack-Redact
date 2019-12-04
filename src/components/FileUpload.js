@@ -23,7 +23,9 @@ const FileUpload = () => {
 
   function handleFileUpload(e) {
     reader.onload = onReaderLoad;
-    dispatch(updateFileName(e.target.files[0].name));
+    const oldName = e.target.files[0].name;
+    const newName = oldName.match(/^.*(?=(\.json))/)[0] + '_REDACTED.json';
+    dispatch(updateFileName(newName));
     reader.readAsText(e.target.files[0]);
   }
 

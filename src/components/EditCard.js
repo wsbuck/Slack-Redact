@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography';
 
 import { updateField } from '../redux/actions';
 
@@ -35,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 const EditCard = ({ data }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const fileName = useSelector(state => state.editJSON.name);
 
   useEffect(() => {
     console.log(data);
@@ -47,6 +49,9 @@ const EditCard = ({ data }) => {
   return (
     <Card className={classes.card}>
       <CardContent>
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          {fileName}
+        </Typography>
         <form className={classes.container} noValidate autoComplete="off">
           {
             Object.keys(data).map((key, index) => (
@@ -55,8 +60,9 @@ const EditCard = ({ data }) => {
                 label={key}
                 value={data[key]}
                 onChange={(e) => handleChange(key, e.target.value)}
+                // disabled
+                multiline
                 variant="outlined"
-                // className={classes.textField}
                 className={
                   key.match(/\./)
                   ? classes.subTextField
