@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -37,10 +37,6 @@ const EditCard = ({ data }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const fileName = useSelector(state => state.editJSON.name);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
 
   function handleChange(key, value) {
     dispatch(updateField(key, value));

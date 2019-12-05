@@ -33,7 +33,8 @@ const NavigationButtons = () => {
     } else if (canPrev && leftPress) {
       handlePrev();
     }
-  }, [leftPress, rightPress]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [leftPress, rightPress, canNext, canPrev]);
 
   function handlePrev() {
     if (canPrev) {
