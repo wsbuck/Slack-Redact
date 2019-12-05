@@ -36,9 +36,6 @@ function App() {
       <NavigationButtons />
       <ProgressBar />
       {dataItem && (<EditCard data={dataItem} />)}
-      { data && (
-        <p>Index: {dataIndex}</p>
-      )}
       <div className={classes.fileButtons}>
         <FileUpload />
         <FileDownload />
