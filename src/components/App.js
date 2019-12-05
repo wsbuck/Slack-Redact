@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
+import { makeStyles } from '@material-ui/core/styles';
+
 import NavigationButtons from './NavigationButtons';
 import EditCard from './EditCard';
 import FileUpload from './FileUpload';
 import FileDownload from './FileDownload';
-import { makeStyles } from '@material-ui/core/styles';
+import ProgressBar from './ProgressBar';
+
 import '../assets/App.css';
 
 
@@ -31,6 +34,7 @@ function App() {
   return (
     <div className="App">
       <NavigationButtons />
+      <ProgressBar />
       {dataItem && (<EditCard data={dataItem} />)}
       { data && (
         <p>Index: {dataIndex}</p>

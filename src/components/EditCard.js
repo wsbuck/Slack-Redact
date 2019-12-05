@@ -7,11 +7,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EditIcon from '@material-ui/icons/Edit';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import { updateField } from '../redux/actions';
 
@@ -102,24 +102,28 @@ const EditCard = ({ data }) => {
                   variant="outlined"
                   disabled={disabled[key]}
                 />
-                <IconButton
-                  className={classes.iconButton}
-                  aria-label='redact all'
-                  onClick={() => handleRedact(key)}
-                >
-                  <HighlightOffIcon />
-                </IconButton>
+                <Tooltip title="Redact entire field">
+                  <IconButton
+                    className={classes.iconButton}
+                    aria-label='redact all'
+                    onClick={() => handleRedact(key)}
+                  >
+                    <HighlightOffIcon />
+                  </IconButton>
+                </Tooltip>
                 <Divider
                   className={classes.divider}
                   orientation="vertical"
                 />
-                <IconButton
-                  className={classes.iconButton}
-                  aria-label="directions"
-                  onClick={() => handleEdit(key)}
-                >
-                  <EditIcon />
-                </IconButton>
+                <Tooltip title="Edit">
+                  <IconButton
+                    className={classes.iconButton}
+                    aria-label="directions"
+                    onClick={() => handleEdit(key)}
+                  >
+                    <EditIcon />
+                  </IconButton>
+                </Tooltip>
               </div>
                 
             ))
