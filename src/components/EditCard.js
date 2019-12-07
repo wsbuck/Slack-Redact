@@ -66,7 +66,7 @@ const EditCard = ({ data }) => {
   }
 
   function handleRedact(event, key) {
-    dispatch(updateField(key, "XXXXX"));
+    dispatch(updateField(key, "X".repeat(data[key].length)));
   }
 
   function handleEdit(event, key) {
