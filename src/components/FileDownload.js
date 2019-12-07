@@ -10,11 +10,6 @@ const FileDownload = () => {
   const filename = useSelector(state => state.editJSON.name);
   const [dataStr, setDataStr] = useState('');
 
-  // const dataStr = (
-  //   "data:text/json;charset=utf-8," + 
-  //   encodeURIComponent(JSON.stringify(dataObj))
-  // );
-
   useEffect(() => {
     const tempObj = dataObj.map((item) => {
       return flatten.unflatten(item);
@@ -27,8 +22,13 @@ const FileDownload = () => {
   }, [dataObj]);
 
   return (
-    <Button variant="outlined" href={dataStr} download={filename}>
-      Download
+    <Button
+      variant="outlined"
+      href={dataStr}
+      download={filename}
+      color='primary'
+    >
+      Download JSON
     </Button>
   );
 }

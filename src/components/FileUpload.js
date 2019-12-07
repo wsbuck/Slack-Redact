@@ -52,8 +52,9 @@ const FileUpload = () => {
       <Button
         onClick={() => handleClick()}
         variant="outlined"
+        color='primary'
       >
-        Upload
+        Upload JSON
       </Button>
     </div>
   );

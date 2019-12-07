@@ -8,6 +8,7 @@ import NavigationButtons from './NavigationButtons';
 import EditCard from './EditCard';
 import FileUpload from './FileUpload';
 import FileDownload from './FileDownload';
+import ExplanationsDownload from  './ExplanationsDownload';
 import ProgressBar from './ProgressBar';
 
 import '../assets/App.css';
@@ -40,6 +41,7 @@ function App() {
       <div className={classes.fileButtons}>
         <FileUpload />
         <FileDownload />
+        <ExplanationsDownload />
       </div>
 
     </div>

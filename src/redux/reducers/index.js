@@ -27,7 +27,7 @@ const editJSON = (
       },
     ],
     index: 0,
-    explanations: [],
+    explanations: [['jsonIndex', 'fieldName', 'Explanation']],
   },
   action
 ) => {
