@@ -7,6 +7,7 @@ import {
   DECREMENT_INDEX,
   UPDATE_FIELD,
   UPDATE_FILENAME,
+  ADD_EXPLANATION,
 } from '../actions';
 
 const editJSON = (
@@ -26,6 +27,7 @@ const editJSON = (
       },
     ],
     index: 0,
+    explanations: [],
   },
   action
 ) => {
@@ -60,6 +62,13 @@ const editJSON = (
           }
           return item;
         })
+      });
+    case ADD_EXPLANATION:
+      return Object.assign({}, state, {
+        explanations: [
+          ...state.explanations,
+          [action.index, action.field, action.explanation]
+        ],
       });
     default:
       return state;

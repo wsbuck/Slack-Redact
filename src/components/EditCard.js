@@ -14,6 +14,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
 
 import { updateField } from '../redux/actions';
+import AddExplanationButton from './AddExplanationButton';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -56,21 +57,31 @@ const EditCard = ({ data }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const fileName = useSelector(state => state.editJSON.name);
+  const dataIndex = useSelector(state => state.editJSON.index);
+  const currentExplanations = useSelector(state => state.editJSON.explanations);
   const [disabled, setDisabled] = useState({});
 
   function handleChange(key, value) {
     dispatch(updateField(key, value));
   }
 
-  function handleRedact(key) {
+  function handleRedact(event, key) {
     dispatch(updateField(key, "XXXXX"));
   }
 
-  function handleEdit(key) {
+  function handleEdit(event, key) {
     let temp = Object.assign({}, disabled, {
       [key]: !disabled[key]
     });
     setDisabled(temp);
+  }
+
+  function checkExplanation(key, index) {
+    const explanations = currentExplanations || [];
+    const found = explanations.find(e => (
+      e[0] === index && e[1] === key
+    ));
+    return found ? true : false;
   }
 
 
@@ -106,7 +117,7 @@ const EditCard = ({ data }) => {
                   <IconButton
                     className={classes.iconButton}
                     aria-label='redact all'
-                    onClick={() => handleRedact(key)}
+                    onClick={(e) => handleRedact(e, key)}
                   >
                     <HighlightOffIcon />
                   </IconButton>
@@ -119,11 +130,16 @@ const EditCard = ({ data }) => {
                   <IconButton
                     className={classes.iconButton}
                     aria-label="directions"
-                    onClick={() => handleEdit(key)}
+                    onClick={(e) => handleEdit(e, key)}
                   >
                     <EditIcon />
                   </IconButton>
                 </Tooltip>
+                <AddExplanationButton
+                  field={key}
+                  dataIndex={dataIndex}
+                  hasExplanation={checkExplanation(key, dataIndex)}
+                />
               </div>
                 
             ))

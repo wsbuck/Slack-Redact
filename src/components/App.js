@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
   fileButtons: {
     display: 'flex',
     justifyContent: 'center',
+    margin: 20,
   },
 }));
 
