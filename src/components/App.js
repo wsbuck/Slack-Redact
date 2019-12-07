@@ -10,6 +10,7 @@ import FileUpload from './FileUpload';
 import FileDownload from './FileDownload';
 import ExplanationsDownload from  './ExplanationsDownload';
 import ProgressBar from './ProgressBar';
+import InfoButton from './InfoButton';
 
 import '../assets/App.css';
 
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div className="App">
+      <InfoButton />
       <NavigationButtons />
       <ProgressBar />
       {dataItem && (<EditCard data={dataItem} />)}
