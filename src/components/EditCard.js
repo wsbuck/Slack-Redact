@@ -13,7 +13,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EditIcon from '@material-ui/icons/Edit';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { updateField } from '../redux/actions';
+import { updateField, setProceed } from '../redux/actions';
 import AddExplanationButton from './AddExplanationButton';
 
 const useStyles = makeStyles(theme => ({
@@ -60,12 +60,17 @@ const EditCard = ({ data }) => {
   const dataIndex = useSelector(state => state.editJSON.index);
   const currentExplanations = useSelector(state => state.editJSON.explanations);
   const [disabled, setDisabled] = useState({});
+  const [redacted, setRedacted] = useState({});
 
   function handleChange(key, value) {
     dispatch(updateField(key, value));
   }
 
   function handleRedact(event, key) {
+    let temp = Object.assign({}, redacted, {
+      [key]: !redacted[key]
+    });
+    setRedacted(temp);
     dispatch(updateField(key, "X".repeat(data[key].length)));
   }
 
@@ -83,15 +88,37 @@ const EditCard = ({ data }) => {
     ));
     return found ? true : false;
   }
-
-
+  
   useEffect(() => {
     const tempDisabled = {};
+    const tempRedacted = {};
     Object.keys(data).forEach((key) => {
       tempDisabled[key] = true;
+      tempRedacted[key] = false;
     });
     setDisabled(tempDisabled);
+    setRedacted(tempRedacted);
   }, [data])
+
+  useEffect(() => {
+    const rKeys = Object.keys(redacted).filter((e) => (
+      redacted[e] === true
+    ));
+
+    console.log(rKeys);
+
+    const needsExplanation = rKeys.find((el) => (
+      !checkExplanation(el, dataIndex)
+    ));
+
+    if (needsExplanation) {
+      dispatch(setProceed(false));
+    } else {
+      dispatch(setProceed(true));
+    }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [redacted, dispatch, checkExplanation])
 
   return (
     <Card className={classes.card}>
@@ -112,6 +139,7 @@ const EditCard = ({ data }) => {
                   inputProps={{ 'aria-label': key }}
                   variant="outlined"
                   disabled={disabled[key]}
+                  error={redacted[key] && !checkExplanation(key, dataIndex)}
                 />
                 <Tooltip title="Redact entire field">
                   <IconButton
@@ -139,6 +167,10 @@ const EditCard = ({ data }) => {
                   field={key}
                   dataIndex={dataIndex}
                   hasExplanation={checkExplanation(key, dataIndex)}
+                  needsExplanation={(
+                    redacted[key] && 
+                    !checkExplanation(key, dataIndex)
+                  )}
                 />
               </div>
                 

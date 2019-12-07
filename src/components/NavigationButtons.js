@@ -16,6 +16,7 @@ const NavigationButtons = () => {
   const dispatch = useDispatch();
   const dataLength = useSelector(state => state.editJSON.data.length);
   const dataIndex = useSelector(state => state.editJSON.index);
+  const canProceed = useSelector(state => state.editJSON.canProceed);
   const [canNext, setCanNext] = useState(false);
   const [canPrev, setCanPrev] = useState(false);
   const leftPress = useKeyPress('ArrowLeft');
@@ -37,27 +38,28 @@ const NavigationButtons = () => {
   }, [leftPress, rightPress, canNext, canPrev]);
 
   function handlePrev() {
-    if (canPrev) {
+    if (canPrev && canProceed) {
       dispatch(decrementIndex());
     }
   }
 
   function handleNext() {
-    if (canNext) {
+    if (canNext && canProceed) {
       dispatch(incrementIndex());
     }
   }
 
+
   return (
     <ButtonGroup>
       <Button 
-        disabled={dataIndex <= 0}
+        disabled={!canProceed || dataIndex <= 0}
         onClick={() => dispatch(decrementIndex())}
       >
         <ArrowBackIcon />
       </Button>
       <Button
-        disabled={dataIndex >= dataLength - 1}
+        disabled={!canProceed || dataIndex >= dataLength - 1}
         onClick={() => dispatch(incrementIndex())}
       >
         <ArrowForwardIcon />

@@ -11,7 +11,12 @@ import CommentIcon from '@material-ui/icons/Comment';
 import { redactExplanations } from "../constants";
 import { addExplanation } from '../redux/actions';
 
-const AddExplanationButton = ({ field, hasExplanation, dataIndex }) => {
+const AddExplanationButton = ({
+  field,
+  hasExplanation,
+  needsExplanation,
+  dataIndex,
+}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const dispatch = useDispatch();
 
@@ -45,7 +50,13 @@ const AddExplanationButton = ({ field, hasExplanation, dataIndex }) => {
       <Tooltip title="Add redact explanation">
         <IconButton
           onClick={(e) => handleClickToOpen(e)}
-          color={hasExplanation ? 'primary' : undefined}
+          color={(
+            needsExplanation
+            ? 'secondary'
+            : hasExplanation 
+              ? 'primary'
+              : undefined
+          )}
         >
           <CommentIcon />
         </IconButton>

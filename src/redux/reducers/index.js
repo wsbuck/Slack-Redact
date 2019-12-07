@@ -8,12 +8,14 @@ import {
   UPDATE_FIELD,
   UPDATE_FILENAME,
   ADD_EXPLANATION,
+  SET_PROCEED,
 } from '../actions';
 
 const editJSON = (
   state={
     isLoading: false,
-    name: 'temp.json',
+    canProceed: true,
+    name: 'temp_REDACTED.json',
     data: [
       {
         a: 'Hello',
@@ -49,6 +51,10 @@ const editJSON = (
     case DECREMENT_INDEX:
       return Object.assign({}, state, {
         index: state.index - 1,
+      });
+    case SET_PROCEED:
+      return Object.assign({}, state, {
+        canProceed: action.proceed,
       });
     case UPDATE_FILENAME:
       return Object.assign({}, state, {

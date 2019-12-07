@@ -5,6 +5,8 @@ export const DECREMENT_INDEX = 'DECREMENT_INDEX';
 export const UPDATE_FIELD = 'UPDATE_FIELD';
 export const UPDATE_FILENAME = 'UPDATE_FILENAME';
 export const ADD_EXPLANATION = 'ADD_EXPLANATION';
+export const TOGGLE_PROCEED = 'TOGGLE_PROCEED';
+export const SET_PROCEED = 'SET_PROCEED';
 
 export function receiveJSON(json) {
   return {
@@ -52,5 +54,18 @@ export function addExplanation(index, field, explanation) {
     index: index,
     field: field,
     explanation: explanation,
+  };
+}
+
+export function toggleProceed() {
+  return {
+    type: TOGGLE_PROCEED,
+  };
+}
+
+export function setProceed(proceed) {
+  return {
+    type: SET_PROCEED,
+    proceed: proceed,
   };
 }

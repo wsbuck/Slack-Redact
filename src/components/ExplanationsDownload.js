@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 
 const ExplanationsDownload = () => {
   const dataObj = useSelector(state => state.editJSON.explanations);
+  const canProceed = useSelector(state => state.editJSON.canProceed);
   const filename = 'Explanations.csv';
   const [dataStr, setDataStr] = useState('');
 
@@ -25,6 +26,7 @@ const ExplanationsDownload = () => {
       variant="outlined"
       href={dataStr}
       download={filename}
+      disabled={!canProceed}
     >
       Download Reasons
     </Button>

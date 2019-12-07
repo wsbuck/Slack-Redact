@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 const FileDownload = () => {
   const dataObj = useSelector(state => state.editJSON.data);
   const filename = useSelector(state => state.editJSON.name);
+  const canProceed = useSelector(state => state.editJSON.canProceed);
   const [dataStr, setDataStr] = useState('');
 
   useEffect(() => {
@@ -27,6 +28,7 @@ const FileDownload = () => {
       href={dataStr}
       download={filename}
       color='primary'
+      disabled={!canProceed}
     >
       Download JSON
     </Button>
