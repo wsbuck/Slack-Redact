@@ -68,7 +68,7 @@ const EditCard = ({ data }) => {
 
   function handleRedact(event, key) {
     let temp = Object.assign({}, redacted, {
-      [key]: !redacted[key]
+      [key]: true
     });
     setRedacted(temp);
     dispatch(updateField(key, "X".repeat(data[key].length)));
@@ -79,6 +79,10 @@ const EditCard = ({ data }) => {
       [key]: !disabled[key]
     });
     setDisabled(temp);
+    let tempRedact = Object.assign({}, redacted, {
+      [key]: true
+    });
+    setRedacted(tempRedact);
   }
 
   function checkExplanation(key, index) {
