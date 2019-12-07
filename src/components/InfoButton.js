@@ -14,10 +14,13 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'end',
-    width: 700,
+    width: 600,
+    height: 20,
     maxWidth: '100%',
     marginLeft: 'auto',
     marginRight: 'auto',
+    marginTop: 0,
+    marginBottom: 0,
   },
 }));
 
@@ -49,19 +52,27 @@ const InfoButton = () => {
         </DialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Click the 'UPLOAD JSON' button to upload your JSON file to the web app
+            Click the 'UPLOAD JSON' button to upload your JSON file
+            to the web application.
           </Typography>
           <Typography gutterBottom>
             Once the form loads to your json structure, click the edit or 
             redact-all buttons to edit your new JSON.
           </Typography>
           <Typography gutterBottom>
-            The 'add explanation' button allows for the user to choose an explanation for
-            the redaction that is compiled to a csv file for later download.
+            After you complete your edit, make sure to select the applicable
+            explanation for the redaction. You will not be able to download
+            your new files or advance to the next items until you add an
+            explanation.
           </Typography>
           <Typography gutterBottom>
-            Once all edits are done, a redacted version of your JSON is available
-            for download by click the 'DOWNLOAD JSON' button.
+            The 'add explanation' button allows for the user to choose an
+            explanation for the redaction that is compiled to a csv
+            file for later download.
+          </Typography>
+          <Typography gutterBottom>
+            Once all edits are done, a redacted version of your JSON
+            is available for download by clicking the 'DOWNLOAD JSON' button.
           </Typography>
           <Typography gutterBottom>
             All edits are done in the browser and never sent to a server.
