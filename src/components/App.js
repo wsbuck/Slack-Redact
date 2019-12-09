@@ -1,28 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Divider from '@material-ui/core/Divider';
 
-import NavigationButtons from './NavigationButtons';
-import EditCard from './EditCard';
-import FileUpload from './FileUpload';
-import FileDownload from './FileDownload';
-import ExplanationsDownload from  './ExplanationsDownload';
-import ProgressBar from './ProgressBar';
-import InfoButton from './InfoButton';
+import NavigationButtons from "./NavigationButtons";
+import EditCard from "./EditCard";
+import FileUpload from "./FileUpload";
+import FileDownload from "./FileDownload";
+import ExplanationsDownload from "./ExplanationsDownload";
+import ProgressBar from "./ProgressBar";
+import Header from "./Header";
+import Footer from "./Footer";
 
-import '../assets/App.css';
-
+import "../assets/App.css";
 
 const useStyles = makeStyles(theme => ({
-  fileButtons: {
-    display: 'flex',
-    justifyContent: 'center',
-    margin: 20,
+  root: {
+    // maxWidth: "100%",
+    width: 600,
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(5),
+    padding: theme.spacing(2)
   },
+  fileButtons: {
+    display: "flex",
+    justifyContent: "space-between",
+    height: 40,
+    margin: 20
+  },
+  divider: {
+    margin: theme.spacing(3),
+  }
 }));
-
 
 function App() {
   const classes = useStyles();
@@ -36,16 +50,20 @@ function App() {
 
   return (
     <div className="App">
-      <InfoButton />
-      <NavigationButtons />
-      <ProgressBar />
-      {dataItem && (<EditCard data={dataItem} />)}
-      <div className={classes.fileButtons}>
-        <FileUpload />
-        <FileDownload />
-        <ExplanationsDownload />
-      </div>
-
+      <Paper className={classes.root}>
+        <Header />
+        <NavigationButtons />
+        <ProgressBar />
+        <Divider variant='middle' className={classes.divider} />
+        {dataItem && <EditCard data={dataItem} />}
+        <Divider variant='middle' className={classes.divider} />
+        <div className={classes.fileButtons}>
+          <FileUpload />
+          <FileDownload />
+          <ExplanationsDownload />
+        </div>
+      </Paper>
+      <Footer />
     </div>
   );
 }

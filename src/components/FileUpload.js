@@ -14,6 +14,9 @@ const useStyles = makeStyles(theme => ({
   hidden: {
     display: 'none',
   },
+  button: {
+    width: 200,
+  },
 }));
 
 const FileUpload = () => {
@@ -42,7 +45,7 @@ const FileUpload = () => {
   }
 
   return (
-    <div>
+    <>
       <input
         type="file"
         onChange={(e) => handleFileUpload(e)}
@@ -56,7 +59,7 @@ const FileUpload = () => {
       >
         Upload JSON
       </Button>
-    </div>
+    </>
   );
 }
 
