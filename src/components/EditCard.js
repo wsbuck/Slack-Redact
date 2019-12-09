@@ -62,7 +62,7 @@ const EditCard = ({ data }) => {
       [key]: true
     });
     setRedacted(temp);
-    dispatch(updateField(key, "X".repeat(data[key].length)));
+    dispatch(updateField(key, "X".repeat(String(data[key]).length)));
   }
 
   function handleEdit(event, key) {
@@ -104,7 +104,7 @@ const EditCard = ({ data }) => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [redacted, dispatch, checkExplanation]);
+  }, [redacted]);
 
   return (
     <div>
