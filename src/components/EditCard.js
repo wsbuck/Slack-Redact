@@ -103,8 +103,8 @@ const EditCard = ({ data }) => {
       dispatch(setProceed(true));
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [redacted]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [redacted, checkExplanation]);
 
   return (
     <div>
