@@ -39,7 +39,8 @@ const Footer = () => {
         </Grid>
         <Grid item xs={12}>
           <Typography variant='caption'>
-            created by <a href="https://williambuck.dev">William Buck</a>
+            created by <a href="https://williambuck.dev">William Buck</a> 
+            &nbsp;and <a href="https://www.linkedin.com/in/bonnieawolfe/">Bonnie Wolfe</a>
           </Typography>
         </Grid>
       </Grid>
