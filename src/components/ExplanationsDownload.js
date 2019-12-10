@@ -6,7 +6,9 @@ import Button from '@material-ui/core/Button';
 const ExplanationsDownload = () => {
   const dataObj = useSelector(state => state.editJSON.explanations);
   const canProceed = useSelector(state => state.editJSON.canProceed);
-  const filename = 'Explanations.csv';
+  const jsonName = useSelector(state => state.editJSON.name);
+  const [filename, setFilename] = useState('');
+  // const filename = 'Explanations.csv';
   const [dataStr, setDataStr] = useState('');
 
   useEffect(() => {
@@ -19,6 +21,11 @@ const ExplanationsDownload = () => {
     setDataStr(encodeURI(csvContent));
 
   }, [dataObj]);
+
+  useEffect(() => {
+    const name = jsonName.match(/^.*(?=(_REDACTED\.json))/)[0] + '_REASONS.csv';
+    setFilename(name);
+  }, [jsonName]);
 
   return (
     <Button

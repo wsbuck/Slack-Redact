@@ -30,7 +30,9 @@ const ProgressBar = () => {
       value={(dataIndex + 1) / dataLength * 100}
       className={classes.root}
     />
-    <span className={classes.text}>({dataIndex + 1} of {dataLength})</span>
+    <span className={classes.text}>
+      Index: {dataIndex} ({dataIndex + 1} of {dataLength})
+    </span>
     </>
   );
 }
