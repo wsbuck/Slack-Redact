@@ -22,9 +22,9 @@ const useStyles = makeStyles(theme => ({
 const FileUpload = () => {
   const reader = new FileReader();
   const dispatch = useDispatch();
-  const classes = useStyles();
+  const classes = useStyles({});
 
-  function handleFileUpload(e) {
+  function handleFileUpload(e: any) {
     reader.onload = onReaderLoad;
     const oldName = e.target.files[0].name;
     const newName = oldName.match(/^.*(?=(\.json))/)[0] + '_REDACTED.json';
@@ -32,32 +32,37 @@ const FileUpload = () => {
     reader.readAsText(e.target.files[0]);
   }
 
-  function onReaderLoad(e) {
+  function onReaderLoad(e: any) {
     const obj = JSON.parse(e.target.result);
-    const newObj = obj.map(item => {
+    const newObj = obj.map((item: any) => {
       return flatten(item);
     });
     dispatch(receiveJSON(newObj));
   }
 
-  function handleClick() {
-    document.querySelector('#input').click();
-  }
+  // function handleClick() {
+  //   const uploadInput: HTMLElement = document.querySelector('#input');
+  //   if (uploadInput) {
+  //     uploadInput.click();
+  //   }
+  // }
 
   return (
     <>
-      <input
-        type="file"
-        onChange={(e) => handleFileUpload(e)}
-        id='input'
-        className={classes.hidden}
-      />
       <Button
-        onClick={() => handleClick()}
+        // onClick={() => handleClick()}
         variant="outlined"
         color='primary'
+        component='label'
       >
         Upload JSON
+        <input
+          type="file"
+          accept=".json"
+          onChange={(e) => handleFileUpload(e)}
+          id='input'
+          className={classes.hidden}
+        />
       </Button>
     </>
   );

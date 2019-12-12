@@ -5,27 +5,34 @@ import { useDispatch } from 'react-redux';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Tooltip from '@material-ui/core/Tooltip';
-import IconButton from '@material-ui/core/Iconbutton';
+import IconButton from '@material-ui/core/IconButton';
 import CommentIcon from '@material-ui/icons/Comment';
 
 import { redactExplanations } from "../constants";
 import { addExplanation } from '../redux/actions';
+
+type AddExplanationButtonProps = {
+  field: string,
+  hasExplanation: boolean,
+  needsExplanation: boolean,
+  dataIndex: number,
+};
 
 const AddExplanationButton = ({
   field,
   hasExplanation,
   needsExplanation,
   dataIndex,
-}) => {
+}: AddExplanationButtonProps) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const dispatch = useDispatch();
 
-  function handleMenuClose(explanation) {
+  function handleMenuClose(explanation: string) {
     setAnchorEl(null);
     dispatch(addExplanation(dataIndex, field, explanation));
   }
 
-  function handleClickToOpen(event) {
+  function handleClickToOpen(event: any) {
     setAnchorEl(event.currentTarget);
   }
 

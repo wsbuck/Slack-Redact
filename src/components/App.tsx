@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { useSelector } from "react-redux";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Divider from '@material-ui/core/Divider';
 
@@ -17,7 +17,7 @@ import Footer from "./Footer";
 
 import "../assets/App.css";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
     // maxWidth: "100%",
     width: 600,
@@ -39,9 +39,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function App() {
-  const classes = useStyles();
-  const data = useSelector(state => state.editJSON.data);
-  const dataIndex = useSelector(state => state.editJSON.index);
+  const classes = useStyles({});
+  const data = useSelector((state: any) => state.editJSON.data);
+  const dataIndex = useSelector((state: any) => state.editJSON.index);
   const [dataItem, setDataItem] = useState();
 
   useEffect(() => {

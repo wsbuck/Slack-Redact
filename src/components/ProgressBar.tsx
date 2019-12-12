@@ -19,9 +19,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const ProgressBar = () => {
-  const classes = useStyles();
-  const dataIndex = useSelector(state => state.editJSON.index);
-  const dataLength = useSelector(state => state.editJSON.data.length);
+  const classes = useStyles({});
+  const dataIndex = useSelector((state: any) => state.editJSON.index);
+  const dataLength = useSelector((state: any) => state.editJSON.data.length);
 
   return (
     <>

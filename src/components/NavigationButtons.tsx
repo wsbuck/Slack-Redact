@@ -14,9 +14,9 @@ import useKeyPress from '../hooks/useKeyPress';
 
 const NavigationButtons = () => {
   const dispatch = useDispatch();
-  const dataLength = useSelector(state => state.editJSON.data.length);
-  const dataIndex = useSelector(state => state.editJSON.index);
-  const canProceed = useSelector(state => state.editJSON.canProceed);
+  const dataLength = useSelector((state: any) => state.editJSON.data.length);
+  const dataIndex = useSelector((state: any) => state.editJSON.index);
+  const canProceed = useSelector((state: any) => state.editJSON.canProceed);
   const [canNext, setCanNext] = useState(false);
   const [canPrev, setCanPrev] = useState(false);
   const leftPress = useKeyPress('ArrowLeft');

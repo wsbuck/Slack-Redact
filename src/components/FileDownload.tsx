@@ -6,13 +6,13 @@ import flatten from 'flat';
 import Button from '@material-ui/core/Button';
 
 const FileDownload = () => {
-  const dataObj = useSelector(state => state.editJSON.data);
-  const filename = useSelector(state => state.editJSON.name);
-  const canProceed = useSelector(state => state.editJSON.canProceed);
+  const dataObj = useSelector((state: any) => state.editJSON.data);
+  const filename = useSelector((state: any) => state.editJSON.name);
+  const canProceed = useSelector((state: any) => state.editJSON.canProceed);
   const [dataStr, setDataStr] = useState('');
 
   useEffect(() => {
-    const tempObj = dataObj.map((item) => {
+    const tempObj = dataObj.map((item: any) => {
       return flatten.unflatten(item);
     });
     setDataStr(

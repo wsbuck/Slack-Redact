@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
@@ -11,7 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import InfoIcon from "@material-ui/icons/Info";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
     textAlign: "end",
     height: 0,
@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
 
 const InfoButton = () => {
   const [open, setOpen] = useState(false);
-  const classes = useStyles();
+  const classes = useStyles({});
 
   function handleClickOpen() {
     setOpen(true);
@@ -35,19 +35,16 @@ const InfoButton = () => {
   }
 
   return (
-    <>
+    <div>
       <IconButton
-        variant="outlined"
         color="primary"
         onClick={handleClickOpen}
-        className={classes.button}
       >
         <InfoIcon />
       </IconButton>
       <Dialog onClose={handleClose} open={open}>
         <DialogTitle
           className={classes.title}
-          onClose={handleClose}
         >
           Redact your JSON
         </DialogTitle>
@@ -99,7 +96,7 @@ const InfoButton = () => {
           </Button>
         </DialogActions>
       </Dialog>
-    </>
+    </div>
   );
 };
 

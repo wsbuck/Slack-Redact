@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
@@ -14,7 +14,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import { updateField, setProceed } from "../redux/actions";
 import AddExplanationButton from "./AddExplanationButton";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
   container: {
     display: "flex",
     flexWrap: "wrap"
@@ -44,20 +44,28 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const EditCard = ({ data }) => {
-  const classes = useStyles();
-  const dispatch = useDispatch();
-  const fileName = useSelector(state => state.editJSON.name);
-  const dataIndex = useSelector(state => state.editJSON.index);
-  const currentExplanations = useSelector(state => state.editJSON.explanations);
-  const [disabled, setDisabled] = useState({});
-  const [redacted, setRedacted] = useState({});
+interface IDisabled {
+  [key: string]: boolean;
+};
 
-  function handleChange(key, value) {
+interface IRedacted {
+  [key: string]: boolean;
+};
+
+const EditCard = ({ data }: any) => {
+  const classes = useStyles({});
+  const dispatch = useDispatch();
+  const fileName = useSelector((state: any) => state.editJSON.name);
+  const dataIndex = useSelector((state: any) => state.editJSON.index);
+  const currentExplanations = useSelector((state: any) => state.editJSON.explanations);
+  const [disabled, setDisabled] = useState<IDisabled>({});
+  const [redacted, setRedacted] = useState<IRedacted>({});
+
+  function handleChange(key: string, value: string) {
     dispatch(updateField(key, value));
   }
 
-  function handleRedact(event, key) {
+  function handleRedact(event: any, key: any) {
     let temp = Object.assign({}, redacted, {
       [key]: true
     });
@@ -65,7 +73,7 @@ const EditCard = ({ data }) => {
     dispatch(updateField(key, "X".repeat(String(data[key]).length)));
   }
 
-  function handleEdit(event, key) {
+  function handleEdit(event: any, key: any) {
     let temp = Object.assign({}, disabled, {
       [key]: !disabled[key]
     });
@@ -76,16 +84,16 @@ const EditCard = ({ data }) => {
     setRedacted(tempRedact);
   }
 
-  function checkExplanation(key, index) {
+  function checkExplanation(key: String, index: Number) {
     const explanations = currentExplanations || [];
-    const found = explanations.find(e => e[0] === index && e[1] === key);
+    const found = explanations.find((e: any) => e[0] === index && e[1] === key);
     return found ? true : false;
   }
 
   useEffect(() => {
-    const tempDisabled = {};
-    const tempRedacted = {};
-    Object.keys(data).forEach(key => {
+    const tempDisabled: IDisabled = {};
+    const tempRedacted: IRedacted = {};
+    Object.keys(data).forEach((key: string) => {
       tempDisabled[key] = true;
       tempRedacted[key] = false;
     });
@@ -108,7 +116,7 @@ const EditCard = ({ data }) => {
 
   return (
     <div>
-      <Typography className={classes.title} color="textSecondary" gutterBottom>
+      <Typography color="textSecondary" gutterBottom>
         {fileName}
       </Typography>
       <form className={classes.container} noValidate autoComplete="off">

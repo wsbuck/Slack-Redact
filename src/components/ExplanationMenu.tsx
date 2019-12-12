@@ -8,6 +8,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { redactExplanations } from "../constants";
 import { addExplanation } from '../redux/actions';
 
+type ExplanationMenuProps = {
+  field: string,
+  hasExplanation: boolean,
+  dataIndex: string,
+  anchorEl: any,
+  setAnchorEl: Function,
+  explanation: string,
+  setExplanation: Function
+}
+
 const ExplanationMenu = ({
   field,
   hasExplanation,
@@ -16,9 +26,9 @@ const ExplanationMenu = ({
   setAnchorEl,
   explanation,
   setExplanation
-}) => {
+}: ExplanationMenuProps) => {
 
-  function handleMenuClose(explanation) {
+  function handleMenuClose(explanation: string) {
     setExplanation(explanation);
     setAnchorEl(null);
     // dispatch(addExplanation(dataIndex, field, explanation));
