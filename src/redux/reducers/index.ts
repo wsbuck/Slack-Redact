@@ -31,7 +31,7 @@ const editJSON = (
     index: 0,
     explanations: [['jsonIndex', 'fieldName', 'Explanation']],
   },
-  action
+  action: any
 ) => {
   switch (action.type) {
     case REQUEST_JSON:
@@ -62,7 +62,7 @@ const editJSON = (
       });
     case UPDATE_FIELD:
       return Object.assign({}, state, {
-        data: state.data.map((item, index) => {
+        data: state.data.map((item: any, index: number) => {
           if (index === state.index) {
             item[action.field] = action.value
           }

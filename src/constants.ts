@@ -1,4 +1,4 @@
-export const redactExplanations = [
+export const redactExplanations: Array<string> = [
   'Personal Contact Information',
   'Right to privacy',
   'Preliminary drafts, notes, or intra-agency memoranda',

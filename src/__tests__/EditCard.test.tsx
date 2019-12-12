@@ -6,7 +6,7 @@ import EditCard from '../components/EditCard';
 import providerWrapper from '../testsHelper';
 
 describe('<EditCard />', () => {
-  it('renders div', () => {
+  it('renders', () => {
     const wrapper = shallow(providerWrapper(<EditCard />)).dive();
     expect(wrapper.find('div'));
   });
