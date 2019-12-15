@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Snapshot 1`] = `
+<div
+  className="MuiPaper-root MuiPaper-elevation1 MuiCard-root makeStyles-root-1 MuiPaper-rounded"
+>
+  <div
+    className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-justify-xs-center"
+  >
+    <div
+      className="MuiGrid-root makeStyles-imageContainer-2 MuiGrid-container MuiGrid-item MuiGrid-grid-sm-6"
+    >
+      <img
+        alt="Hack for LA"
+        className="makeStyles-image-3"
+        src="hfla.png"
+      />
+    </div>
+    <div
+      className="MuiGrid-root makeStyles-imageContainer-2 MuiGrid-container MuiGrid-item MuiGrid-grid-sm-6"
+    >
+      <img
+        alt="Business Improvement Development"
+        className="makeStyles-image-3"
+        src="bid.png"
+      />
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+    >
+      <span
+        className="MuiTypography-root MuiTypography-caption"
+      >
+        created by 
+        <a
+          href="https://williambuck.dev"
+        >
+          William Buck
+        </a>
+         and 
+        <a
+          href="https://www.linkedin.com/in/bonnieawolfe/"
+        >
+          Bonnie Wolfe
+        </a>
+      </span>
+    </div>
+  </div>
+</div>
+`;

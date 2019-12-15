@@ -2,6 +2,9 @@
   "name": "json-edit",
   "version": "0.1.0",
   "private": true,
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
   "homepage": "https://wsbuck.github.io/json-edit",
   "dependencies": {
     "@material-ui/core": "^4.7.0",
@@ -49,6 +52,7 @@
     "@types/react-redux": "^7.1.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "sinon": "^7.5.0"
   }
 }
