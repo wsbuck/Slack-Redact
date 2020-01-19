@@ -1,11 +1,11 @@
 {
-  "name": "json-edit",
-  "version": "0.1.0",
+  "name": "Slack-Redact",
+  "version": "0.2.0",
   "private": true,
   "jest": {
     "snapshotSerializers": ["enzyme-to-json/serializer"]
   },
-  "homepage": "https://wsbuck.github.io/json-edit",
+  "homepage": "https://wsbuck.github.io/Slack-Redact",
   "dependencies": {
     "@material-ui/core": "^4.7.0",
     "@material-ui/icons": "^4.5.1",
