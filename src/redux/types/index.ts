@@ -13,7 +13,13 @@ import {
 
 export interface AuthState {
   isAuthenticated: boolean;
-}
+  isLoggingIn: boolean;
+  isLoggingOut: boolean;
+  isVerifying: boolean;
+  loginError: boolean;
+  logoutError: boolean;
+  user: object;
+};
 
 interface RequestLoginAction {
   type: typeof LOGIN_REQUEST,

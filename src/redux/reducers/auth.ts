@@ -9,17 +9,19 @@ import {
   VERIFY_REQUEST,
 } from '../actions/auth';
 
-import { AuthActionTypes } from '../types';
+import { AuthActionTypes, AuthState } from '../types';
 
-export default (state={
+const initialAuthState: AuthState = {
+  isAuthenticated: false,
   isLoggingIn: false,
-  isLoggintOut: false,
+  isLoggingOut: false,
   isVerifying: false,
   loginError: false,
   logoutError: false,
-  isAuthenticated: false,
-  user: {}
-}, action: AuthActionTypes) => {
+  user: {},
+};
+
+export const auth = (state=initialAuthState, action: AuthActionTypes) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return {
@@ -30,14 +32,14 @@ export default (state={
     case LOGIN_SUCCESS:
       return {
         ...state,
-        isLogginIn: false,
+        isLoggingIn: false,
         isAuthenticated: true,
         user: action.user
       };
     case LOGIN_FAILURE:
       return {
         ...state,
-        isLogginIn: false,
+        isLoggingIn: false,
         isAuthenticated: false,
         loginError: true
       };
