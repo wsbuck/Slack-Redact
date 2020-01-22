@@ -28,3 +28,4 @@ yarn-error.log*
 
 .firebaserc
 firestore.rules
+.firebase/

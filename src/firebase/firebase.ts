@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/functions';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -17,3 +18,6 @@ export const myFirebase = firebase.initializeApp(firebaseConfig);
 const baseDb = myFirebase.firestore();
 
 export const db = baseDb;
+
+export const helloWorld = firebase.functions().httpsCallable('helloWorld');
+export const addMessage = firebase.functions().httpsCallable('addMessage');
