@@ -57,8 +57,8 @@ function Login() {
   function handleSubmit(event: React.FormEvent): void {
     event.preventDefault();
     dispatch(loginUser(email, password));
-    helloWorld().then(console.log);
-    addMessage({ text: 'what up yo' }).then(console.log);
+    // helloWorld().then(console.log);
+    // addMessage({ text: 'what up yo' }).then(console.log);
     // addMessage('what up yo').then(console.log);
   }
 
@@ -87,6 +87,7 @@ function Login() {
               id='email'
               label='Email Address'
               name='email'
+              value={email}
               onChange={e => setEmail(e.target.value)}
             />
             <TextField
@@ -97,6 +98,7 @@ function Login() {
               label='Password'
               type='password'
               id='password'
+              value={password}
               onChange={e => setPassword(e.target.value)}
             />
             <Button

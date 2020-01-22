@@ -4,6 +4,8 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  SIGNUP_REQUEST,
+  SIGNUP_FAILURE,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
   LOGOUT_FAILURE,
@@ -18,21 +20,32 @@ export interface AuthState {
   isVerifying: boolean;
   loginError: boolean;
   logoutError: boolean;
+  signupError: boolean;
   user: object;
 };
 
 interface RequestLoginAction {
-  type: typeof LOGIN_REQUEST,
+  type: typeof LOGIN_REQUEST;
   user: void;
 }
 
 interface ReceiveLoginAction {
-  type: typeof LOGIN_SUCCESS,
+  type: typeof LOGIN_SUCCESS;
   user: any;
 }
 
 interface LoginErrorAction {
-  type: typeof LOGIN_FAILURE,
+  type: typeof LOGIN_FAILURE;
+  user: void;
+}
+
+interface RequestSignupAction {
+  type: typeof SIGNUP_REQUEST;
+  user: void;
+}
+
+interface SignupErrorAction {
+  type: typeof SIGNUP_FAILURE;
   user: void;
 }
 
@@ -65,6 +78,8 @@ export type AuthActionTypes = (
   RequestLoginAction |
   ReceiveLoginAction |
   LoginErrorAction |
+  RequestSignupAction |
+  SignupErrorAction |
   RequestLogoutAction |
   ReceiveLogoutAction |
   LogoutErrorAction |
