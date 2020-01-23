@@ -2,6 +2,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 
 import { myFirebase } from '../../firebase/firebase';
+import { charge } from '../../firebase/firebase';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -10,6 +11,10 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 // export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
+
+export const SUBSCRIBE_REQUEST = 'SUBSCRIBE_REQUEST';
+export const SUBSCRIBE_SUCCESS = 'SUBSCRIBE_SUCCESS';
+export const SUBSCRIBE_FAILURE = 'SUBSCRIBE_FAILURE';
 
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
 export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
@@ -47,6 +52,24 @@ const requestSignup = () => {
 const signupError = () => {
   return {
     type: SIGNUP_FAILURE
+  };
+};
+
+const requestSubscribe = () => {
+  return {
+    type: SUBSCRIBE_REQUEST,
+  };
+};
+
+const subscribeSuccess = () => {
+  return {
+    type: SUBSCRIBE_SUCCESS,
+  };
+};
+
+const subscribeError = () => {
+  return {
+    type: SUBSCRIBE_FAILURE,
   };
 };
 
@@ -109,6 +132,22 @@ export const createUser = (email: string, password: string) => (
     .catch(error => {
       console.log(error);
       dispatch(signupError());
+    });
+};
+
+export const subscribeUser = (userID: string, token: any) => (
+  dispatch: ThunkDispatch<{}, {}, AnyAction>
+) => {
+  dispatch(requestSubscribe());
+  charge({ tokenID: token.id, userID: userID })
+    .then((status) => {
+      if (status) {
+        dispatch(subscribeSuccess());
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      dispatch(subscribeError());
     });
 };
 

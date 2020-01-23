@@ -21,3 +21,4 @@ export const db = baseDb;
 
 export const helloWorld = firebase.functions().httpsCallable('helloWorld');
 export const addMessage = firebase.functions().httpsCallable('addMessage');
+export const charge = firebase.functions().httpsCallable('charge');

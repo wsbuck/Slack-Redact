@@ -11,10 +11,15 @@ import {
   LOGOUT_FAILURE,
   VERIFY_SUCCESS,
   VERIFY_REQUEST,
+  SUBSCRIBE_FAILURE,
+  SUBSCRIBE_SUCCESS,
+  SUBSCRIBE_REQUEST,
 } from '../actions/auth';
 
 export interface AuthState {
   isAuthenticated: boolean;
+  isSubscribed: boolean;
+  isSubscribing: boolean;
   isLoggingIn: boolean;
   isLoggingOut: boolean;
   isVerifying: boolean;
@@ -74,6 +79,21 @@ interface VerifySuccessAction {
   user: void;
 }
 
+interface SubscribeSuccessAction {
+  type: typeof SUBSCRIBE_SUCCESS;
+  user: void;
+}
+
+interface RequestSubscribeAction {
+  type: typeof SUBSCRIBE_REQUEST;
+  user: void;
+}
+
+interface SubscribeErrorAction {
+  type: typeof SUBSCRIBE_FAILURE;
+  user: void;
+}
+
 export type AuthActionTypes = (
   RequestLoginAction |
   ReceiveLoginAction |
@@ -84,7 +104,10 @@ export type AuthActionTypes = (
   ReceiveLogoutAction |
   LogoutErrorAction |
   VerifyRequestAction |
-  VerifySuccessAction
+  VerifySuccessAction |
+  SubscribeSuccessAction |
+  SubscribeErrorAction |
+  RequestSubscribeAction
 );
 
 export type RootState = ReturnType<typeof rootReducer>;

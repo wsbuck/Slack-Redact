@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { CardElement, injectStripe } from 'react-stripe-elements';
 
 import Paper from '@material-ui/core/Paper';
 import Container from '@material-ui/core/Container';
@@ -30,7 +29,7 @@ const useStyles = makeStyles((theme: Theme) => (
       color: '#f50057',
       marginBottom: 5,
       textAlign: 'center'
-    }
+    },
   })
 ));
 
@@ -51,7 +50,7 @@ function SignUp(props: any) {
 
   async function handleSubmit(ev: React.FormEvent) {
     ev.preventDefault();
-    console.log('submit');
+
     if (password1 !== password2) {
       setError(true);
       setErrorMessage('Passwords do not match!');
@@ -59,20 +58,8 @@ function SignUp(props: any) {
       setError(true);
       setErrorMessage('Password must be at least 8 characters.');
     } else {
-      dispatch(createUser(email, password1))
+      dispatch(createUser(email, password1));
     }
-
-
-    // let { token } = await props.stripe.createToken({ name: "Name "})
-    // const chargeUrl = "https://us-central1-slack-redact.cloudfunctions.net/charge";
-    // let response = await fetch(chargeUrl, {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(token.id),
-    // });
-    // if (response.ok) {
-    //   console.log('ok');
-    // }
   }
 
   if (isAuthenticated) {
@@ -147,7 +134,7 @@ function SignUp(props: any) {
               onClick={handleSubmit}
               disabled={isLoggingIn}
             >
-              {isLoggingIn ? <CircularProgress size={24} /> : 'Sign In'}
+              {isLoggingIn ? <CircularProgress size={24} /> : 'Sign Up'}
             </Button>
           </form>
           <p>Already have an account? <Link to='/login'>Sign In</Link></p>
@@ -159,4 +146,4 @@ function SignUp(props: any) {
 
 }
 
-export default injectStripe(SignUp);
+export default SignUp;

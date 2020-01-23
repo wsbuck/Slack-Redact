@@ -1,0 +1,133 @@
+[debug] [2020-01-22T08:25:23.682Z] ----------------------------------------------------------------------
+[debug] [2020-01-22T08:25:23.684Z] Command:       /Users/wsbuck/.nvm/versions/node/v12.8.0/bin/node /Users/wsbuck/.nvm/versions/node/v12.8.0/bin/firebase serve
+[debug] [2020-01-22T08:25:23.684Z] CLI Version:   7.12.1
+[debug] [2020-01-22T08:25:23.684Z] Platform:      darwin
+[debug] [2020-01-22T08:25:23.684Z] Node Version:  v12.8.0
+[debug] [2020-01-22T08:25:23.685Z] Time:          Wed Jan 22 2020 00:25:23 GMT-0800 (Pacific Standard Time)
+[debug] [2020-01-22T08:25:23.685Z] ----------------------------------------------------------------------
+[debug] [2020-01-22T08:25:23.685Z] 
+[debug] [2020-01-22T08:25:23.694Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-22T08:25:23.695Z] > authorizing via signed-in user
+[debug] [2020-01-22T08:25:23.695Z] [iam] checking project slack-redact for permissions ["firebase.projects.get"]
+[debug] [2020-01-22T08:25:23.696Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-01-22T08:25:23.696Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-01-22T08:25:23.896Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-22T08:25:23.907Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-redact:testIamPermissions  
+
+[debug] [2020-01-22T08:25:24.408Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-22T08:25:24.410Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/slack-redact  
+ 
+[debug] [2020-01-22T08:25:24.674Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/wsbuck/Projects/Slack-Redact'...
+[info] 
+[debug] [2020-01-22T08:25:24.679Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/slack-redact/webApps/-/config  
+ 
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[info] ✔  functions: Emulator started at http://localhost:5001
+[debug] [2020-01-22T08:25:25.227Z] <<< HTTP RESPONSE 200
+[info] i  functions: Watching "/Users/wsbuck/Projects/Slack-Redact/functions" for Cloud Functions...
+[debug] [2020-01-22T08:25:25.278Z] [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-01-22T08:25:25.278Z] [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-01-22T08:25:25.278Z] [worker-pool] submitWork(triggerId=)
+[debug] [2020-01-22T08:25:25.279Z] [worker-~diagnostic~-cd6d5b99-6695-4f22-9c15-2af6d30255e9]: Assigning socketPath: /var/folders/3f/d7t9h5c94yd6mkgvcr287h5r0000gn/T/fire_emu_4707.sock
+[debug] [2020-01-22T08:25:25.279Z] [worker-~diagnostic~-cd6d5b99-6695-4f22-9c15-2af6d30255e9]: BUSY
+[info] i  hosting: Serving hosting files from: build
+[info] ✔  hosting: Local server: http://localhost:5000
+[debug] [2020-01-22T08:25:25.493Z] [runtime-status] [4707] Functions runtime initialized. {"cwd":"/Users/wsbuck/Projects/Slack-Redact/functions","node_version":"12.8.0"}
+[debug] [2020-01-22T08:25:25.494Z] [runtime-status] [4707] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-01-22T08:25:25.495Z] [runtime-status] [4707] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.1","resolution":"/Users/wsbuck/Projects/Slack-Redact/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2020-01-22T08:25:25.496Z] [runtime-status] [4707] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/wsbuck/Projects/Slack-Redact/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2020-01-22T08:25:25.497Z] [runtime-status] [4707] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/wsbuck/Projects/Slack-Redact/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  TypeError: Cannot read property 'token' of undefined
+    at Object.<anonymous> (/Users/wsbuck/Projects/Slack-Redact/functions/lib/index.js:8:59)
+    at Module._compile (internal/modules/cjs/loader.js:868:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:879:10)
+    at Module.load (internal/modules/cjs/loader.js:731:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:644:12)
+    at Module.require (internal/modules/cjs/loader.js:771:19)
+    at require (internal/modules/cjs/helpers.js:68:18)
+    at /Users/wsbuck/.nvm/versions/node/v12.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:718:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/wsbuck/.nvm/versions/node/v12.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+[warn] ⚠  We were unable to load your functions code. (see above)
+   - It appears your code is written in Typescript, which must be compiled before emulation.
+   - You may be able to run "npm run build" in your functions directory to resolve this.
+[debug] [2020-01-22T08:25:25.615Z] [worker-~diagnostic~-cd6d5b99-6695-4f22-9c15-2af6d30255e9]: exited
+[debug] [2020-01-22T08:25:25.615Z] [worker-~diagnostic~-cd6d5b99-6695-4f22-9c15-2af6d30255e9]: FINISHED
+[debug] [2020-01-23T03:51:11.431Z] ----------------------------------------------------------------------
+[debug] [2020-01-23T03:51:11.438Z] Command:       /Users/wsbuck/.nvm/versions/node/v12.8.0/bin/node /Users/wsbuck/.nvm/versions/node/v12.8.0/bin/firebase functions:shell
+[debug] [2020-01-23T03:51:11.438Z] CLI Version:   7.12.1
+[debug] [2020-01-23T03:51:11.438Z] Platform:      darwin
+[debug] [2020-01-23T03:51:11.438Z] Node Version:  v12.8.0
+[debug] [2020-01-23T03:51:11.458Z] Time:          Wed Jan 22 2020 19:51:11 GMT-0800 (Pacific Standard Time)
+[debug] [2020-01-23T03:51:11.458Z] ----------------------------------------------------------------------
+[debug] [2020-01-23T03:51:11.458Z] 
+[debug] [2020-01-23T03:51:11.480Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-01-23T03:51:11.481Z] > authorizing via signed-in user
+[debug] [2020-01-23T03:51:11.481Z] [iam] checking project slack-redact for permissions ["firebase.projects.get"]
+[debug] [2020-01-23T03:51:11.482Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-01-23T03:51:11.482Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-01-23T03:51:11.722Z] <<< HTTP RESPONSE 200
+[debug] [2020-01-23T03:51:11.732Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-redact:testIamPermissions  
+
+[debug] [2020-01-23T03:51:12.330Z] <<< HTTP RESPONSE 200
+[warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
+[info] ✔  functions: Emulator started at http://localhost:5000
+[debug] [2020-01-23T03:51:12.615Z] [functions] Watching "/Users/wsbuck/Projects/Slack-Redact/functions" for Cloud Functions...
+[debug] [2020-01-23T03:51:12.628Z] DEBUG: [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-01-23T03:51:12.628Z] DEBUG: [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-01-23T03:51:12.629Z] DEBUG: [worker-pool] submitWork(triggerId=)
+[debug] [2020-01-23T03:51:12.629Z] DEBUG: [worker-~diagnostic~-068f6bf2-d6b9-4a68-965f-6d0df65b7b5e]: Assigning socketPath: /var/folders/3f/d7t9h5c94yd6mkgvcr287h5r0000gn/T/fire_emu_7593.sock
+[debug] [2020-01-23T03:51:12.630Z] DEBUG: [worker-~diagnostic~-068f6bf2-d6b9-4a68-965f-6d0df65b7b5e]: BUSY
+[debug] [2020-01-23T03:51:12.861Z] DEBUG: [runtime-status] [7593] Functions runtime initialized. {"cwd":"/Users/wsbuck/Projects/Slack-Redact/functions","node_version":"12.8.0"}
+[debug] [2020-01-23T03:51:12.862Z] DEBUG: [runtime-status] [7593] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-01-23T03:51:12.865Z] DEBUG: [runtime-status] [7593] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.1","resolution":"/Users/wsbuck/Projects/Slack-Redact/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2020-01-23T03:51:12.867Z] DEBUG: [runtime-status] [7593] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/wsbuck/Projects/Slack-Redact/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2020-01-23T03:51:12.867Z] DEBUG: [runtime-status] [7593] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/wsbuck/Projects/Slack-Redact/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  TypeError: Cannot read property 'token' of undefined
+    at Object.<anonymous> (/Users/wsbuck/Projects/Slack-Redact/functions/lib/index.js:8:59)
+    at Module._compile (internal/modules/cjs/loader.js:868:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:879:10)
+    at Module.load (internal/modules/cjs/loader.js:731:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:644:12)
+    at Module.require (internal/modules/cjs/loader.js:771:19)
+    at require (internal/modules/cjs/helpers.js:68:18)
+    at /Users/wsbuck/.nvm/versions/node/v12.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:718:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/wsbuck/.nvm/versions/node/v12.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+[warn] ⚠  We were unable to load your functions code. (see above)
+   - It appears your code is written in Typescript, which must be compiled before emulation.
+   - You may be able to run "npm run build" in your functions directory to resolve this.
+[debug] [2020-01-23T03:51:13.061Z] DEBUG: [worker-~diagnostic~-068f6bf2-d6b9-4a68-965f-6d0df65b7b5e]: exited
+[debug] [2020-01-23T03:51:13.061Z] DEBUG: [worker-~diagnostic~-068f6bf2-d6b9-4a68-965f-6d0df65b7b5e]: FINISHED
+[debug] [2020-01-23T03:51:55.342Z] DEBUG: File /Users/wsbuck/Projects/Slack-Redact/functions/src/index.ts changed, reloading triggers
+[debug] [2020-01-23T03:51:56.346Z] DEBUG: [worker-pool] Cleaned up workers for ~diagnostic~: 1 --> 0
+[debug] [2020-01-23T03:51:56.356Z] DEBUG: [worker-pool] addWorker(~diagnostic~)
+[debug] [2020-01-23T03:51:56.356Z] DEBUG: [worker-pool] Adding worker with key ~diagnostic~, total=1
+[debug] [2020-01-23T03:51:56.356Z] DEBUG: [worker-pool] submitWork(triggerId=)
+[debug] [2020-01-23T03:51:56.357Z] DEBUG: [worker-~diagnostic~-ea979ec2-8a68-4052-841d-cdb8523fa4cf]: Assigning socketPath: /var/folders/3f/d7t9h5c94yd6mkgvcr287h5r0000gn/T/fire_emu_7604.sock
+[debug] [2020-01-23T03:51:56.357Z] DEBUG: [worker-~diagnostic~-ea979ec2-8a68-4052-841d-cdb8523fa4cf]: BUSY
+[debug] [2020-01-23T03:51:56.606Z] DEBUG: [runtime-status] [7604] Functions runtime initialized. {"cwd":"/Users/wsbuck/Projects/Slack-Redact/functions","node_version":"12.8.0"}
+[debug] [2020-01-23T03:51:56.607Z] DEBUG: [runtime-status] [7604] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true,"pubsub_emulator":true}
+[debug] [2020-01-23T03:51:56.609Z] DEBUG: [runtime-status] [7604] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.9.1","resolution":"/Users/wsbuck/Projects/Slack-Redact/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2020-01-23T03:51:56.610Z] DEBUG: [runtime-status] [7604] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/wsbuck/Projects/Slack-Redact/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2020-01-23T03:51:56.611Z] DEBUG: [runtime-status] [7604] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.3.0","resolution":"/Users/wsbuck/Projects/Slack-Redact/functions/node_modules/firebase-functions/lib/index.js"}
+[warn] ⚠  TypeError: Cannot read property 'token' of undefined
+    at Object.<anonymous> (/Users/wsbuck/Projects/Slack-Redact/functions/lib/index.js:8:59)
+    at Module._compile (internal/modules/cjs/loader.js:868:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:879:10)
+    at Module.load (internal/modules/cjs/loader.js:731:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:644:12)
+    at Module.require (internal/modules/cjs/loader.js:771:19)
+    at require (internal/modules/cjs/helpers.js:68:18)
+    at /Users/wsbuck/.nvm/versions/node/v12.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:718:33
+    at Generator.next (<anonymous>)
+    at fulfilled (/Users/wsbuck/.nvm/versions/node/v12.8.0/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorRuntime.js:4:58)
+[warn] ⚠  We were unable to load your functions code. (see above)
+   - It appears your code is written in Typescript, which must be compiled before emulation.
+   - You may be able to run "npm run build" in your functions directory to resolve this.
+[debug] [2020-01-23T03:51:56.692Z] DEBUG: [worker-~diagnostic~-ea979ec2-8a68-4052-841d-cdb8523fa4cf]: exited
+[debug] [2020-01-23T03:51:56.693Z] DEBUG: [worker-~diagnostic~-ea979ec2-8a68-4052-841d-cdb8523fa4cf]: FINISHED

@@ -9,12 +9,17 @@ import {
   LOGOUT_FAILURE,
   VERIFY_SUCCESS,
   VERIFY_REQUEST,
+  SUBSCRIBE_REQUEST,
+  SUBSCRIBE_SUCCESS,
+  SUBSCRIBE_FAILURE,
 } from '../actions/auth';
 
 import { AuthActionTypes, AuthState } from '../types';
 
 const initialAuthState: AuthState = {
   isAuthenticated: false,
+  isSubscribed: false,
+  isSubscribing: false,
   isLoggingIn: false,
   isLoggingOut: false,
   isVerifying: false,
@@ -57,7 +62,7 @@ export const auth = (state=initialAuthState, action: AuthActionTypes) => {
     case SIGNUP_FAILURE:
       return {
         ...state,
-        isLogginIn: false,
+        isLoggingIn: false,
         isAuthenticated: false,
         signupError: true,
       };
@@ -90,6 +95,23 @@ export const auth = (state=initialAuthState, action: AuthActionTypes) => {
       return {
         ...state,
         isVerifying: false
+      };
+    case SUBSCRIBE_REQUEST:
+      return {
+        ...state,
+        isSubscribing: true
+      };
+    case SUBSCRIBE_SUCCESS:
+      return {
+        ...state,
+        isSubscribed: true,
+        isSubscribing: false,
+      };
+    case SUBSCRIBE_FAILURE:
+      return {
+        ...state,
+        isSubscribing: false,
+        isSubscribed: false
       };
     default:
       return state;

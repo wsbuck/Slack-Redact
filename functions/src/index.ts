@@ -6,8 +6,8 @@ import * as admin from 'firebase-admin';
 admin.initializeApp();
 
 // const database = admin.database().ref('/subscriptions');
-// const stripe = require('stripe')(functions.config().stripe.token);
-// const currency = functions.config().stripe.currency || 'USD';
+const stripe = require('stripe')(functions.config().stripe.token);
+const currency = functions.config().stripe.currency || 'USD';
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -30,6 +30,50 @@ admin.initializeApp();
 //     response.status(500).end();
 //   }
 // });
+
+// export const createUser = functions.https.onCall(async (data) => {
+//   const tokenID = data.tokenID;
+//   const name = data.name;
+//   const email = data.email;
+//   const password = data.password;
+
+//   const { status } = await stripe.charges.create({
+//     amount: 5,
+//     currency: currency,
+//     description: 'Slack Redactor',
+//     source: tokenID
+//   });
+
+//   if (!status) {
+//     throw new functions.https.HttpsError(
+//       'unknown',
+//       'Charge could not be completed'
+//     );
+//   }
+
+//   admin.auth().createUser({
+//     email: email,
+//     emailVerified: false,
+//     password: password,
+//     displayName: name
+//   }).then((user) => {
+//     return user;
+//   }).catch(err => {
+//     throw new functions.https.HttpsError('unknown', 'could not create user')
+//   })
+
+// })
+
+export const charge = functions.https.onCall(async (data, context) => {
+  const tokenID = data.tokenID;
+  const { status } = await stripe.charges.create({
+    amount: 5.00,
+    currency: currency,
+    description: 'Slack Redactor',
+    source: tokenID
+  });
+  return { status };
+});
 
 export const addMessage = functions.https.onCall((data, context) => {
   const text = data.text;
